@@ -1,0 +1,12 @@
+{
+  "name": "engineer-fusion-skill",
+  "displayName": "Engineer Fusion Skill",
+  "description": "Unified engineering meta-skill combining Caveman voice, Ponytail minimalism, Addy Osmani discipline, and Superpowers orchestration",
+  "version": "1.0.0",
+  "author": {
+    "name": "Houssem Dub"
+  },
+  "repository": "https://github.com/houssemdub/Engineer-Fusion-Skill",
+  "license": "MIT",
+  "skills": "./skills/"
+}

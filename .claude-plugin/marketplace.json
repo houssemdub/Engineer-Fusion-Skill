@@ -1,0 +1,18 @@
+{
+  "name": "engineer-fusion-dev",
+  "description": "Development marketplace for Engineer-Fusion-Skill",
+  "owner": {
+    "name": "Houssem Dub"
+  },
+  "plugins": [
+    {
+      "name": "engineer-fusion-skill",
+      "description": "Unified engineering meta-skill fusing Caveman voice, Ponytail minimalism, Addy Osmani lifecycle discipline, and Superpowers orchestration",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Houssem Dub"
+      }
+    }
+  ]
+}

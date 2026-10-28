@@ -1,0 +1,33 @@
+{
+  "name": "engineer-fusion-skill",
+  "version": "1.0.0",
+  "description": "Unified engineering meta-skill fusing Caveman voice, Ponytail minimalism, Addy Osmani lifecycle discipline, and Superpowers workflow orchestration",
+  "type": "module",
+  "main": ".opencode/plugins/engineer-fusion.js",
+  "keywords": [
+    "skills",
+    "agent-skills",
+    "caveman",
+    "ponytail",
+    "superpowers",
+    "tdd",
+    "debugging",
+    "software-engineering",
+    "code-review"
+  ],
+  "scripts": {
+    "bundle": "node scripts/bundle.js",
+    "validate": "node scripts/validate.js"
+  },
+  "author": "Houssem Dub",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/houssemdub/Engineer-Fusion-Skill.git"
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  }
+}

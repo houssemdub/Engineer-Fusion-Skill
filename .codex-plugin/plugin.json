@@ -1,0 +1,34 @@
+{
+  "name": "engineer-fusion-skill",
+  "version": "1.0.0",
+  "description": "Unified engineering meta-skill fusing Caveman voice, Ponytail minimalism, Addy Osmani discipline, and Superpowers orchestration",
+  "author": {
+    "name": "Houssem Dub"
+  },
+  "repository": "https://github.com/houssemdub/Engineer-Fusion-Skill",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "engineering",
+    "minimalism",
+    "tdd",
+    "debugging"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Engineer Fusion Skill",
+    "shortDescription": "Voice, minimalism, discipline, and execution orchestration for coding agents",
+    "longDescription": "Combines terse communication (Caveman), minimal complete solutions (Ponytail), rigorous lifecycle standards (Addy Osmani), and execution orchestration with ironclad verification (Superpowers).",
+    "developerName": "Houssem Dub",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "engineering mode",
+      "Fix this bug systematically"
+    ]
+  }
+}

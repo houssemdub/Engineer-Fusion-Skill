@@ -1,122 +1,167 @@
 # Engineer-Fusion-Skill
 
-**One agent skill that fuses three engineering disciplines into a single way of working.**
+**One agent skill that fuses four engineering disciplines into a single high-performance way of working.**
 
-Engineer-Fusion-Skill merges three popular agent skills into one:
+Engineer-Fusion-Skill combines four proven agent skills into one unified, portable framework:
 
-| Layer | Fused from | Governs |
+| Layer | Heritage | Governs |
 |---|---|---|
-| **Voice** | [Caveman](https://github.com/JuliusBrussee/caveman) | How the agent replies — terse, payload-first, zero fluff |
-| **Minimalism** | [Pony Tail Engineer](https://github.com/DietrichGebert/ponytail) | What the agent builds — smallest complete change, YAGNI |
-| **Discipline** | [Addy Osmani's agent-skills](https://github.com/addyosmani/agent-skills) | How the agent verifies and ships — spec, TDD, review, security, git |
+| **1. Voice** | [Caveman](https://github.com/JuliusBrussee/caveman) | How the agent replies — terse, payload-first, zero ceremony |
+| **2. Minimalism** | [Pony Tail Engineer](https://github.com/DietrichGebert/ponytail) | What the agent builds — smallest complete change, YAGNI, standard library first |
+| **3. Discipline** | [Addy Osmani's agent-skills](https://github.com/addyosmani/agent-skills) | How the agent verifies — 25 lifecycle skills, contracts, 80/15/5 test pyramid, security |
+| **4. Orchestration** | [Superpowers](https://github.com/obra/superpowers) | How the agent executes — brainstorming, worktree isolation, systematic debugging, iron law of verification |
 
-Each layer is independent and toggleable, so you get three disciplines for the price of one skill — and can switch any of them off without losing the others.
+Each layer is independent and toggleable, giving you maximum engineering rigor without rigidity.
 
 ```
-┌──────────────────────────────────────────────────────┐
-│                  ENGINEER-FUSION-SKILL               │
-│                                                      │
-│  VOICE (Caveman)      → how you reply                │
-│  MINIMALISM (Ponytail) → what you build              │
-│  DISCIPLINE (Addy)    → how you verify and ship      │
-│                                                      │
-│  All three ON by default. Toggle independently.      │
-└──────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────┐
+│                 ENGINEER-FUSION-SKILL                  │
+│                                                        │
+│  VOICE (Caveman)         → How you reply               │
+│  MINIMALISM (Ponytail)   → What you build              │
+│  DISCIPLINE (Addy)       → Engineering standards      │
+│  ORCHESTRATION (Super)   → How you execute & verify    │
+│                                                        │
+│  All four ON by default. Toggle independently.         │
+└────────────────────────────────────────────────────────┘
 ```
 
-## What it does
+---
 
-When the skill is active, the agent:
+## What It Does
 
-- **Answers like a caveman** — answer first, no ceremony, every technical fact and code payload verbatim. Clarity always beats compression.
-- **Builds like a lazy senior dev** — the smallest change that fully solves the task: reuse what exists, never add a dependency for a few lines, no speculative abstraction — but never cuts validation, error handling, or security.
-- **Works like a staff engineer** — surfaces assumptions, proves bug fixes with reproduction tests, reviews across five axes, keeps commits atomic (~100 lines), never leaves the codebase broken between slices, and routes complex tasks to distilled lifecycle workflows (spec → plan → build → verify → review → ship).
+When active, the agent:
 
-Full details: [DOC.md](DOC.md).
+- **Communicates like a senior engineer (Caveman)**: Payload first, answer first, exact commands, exact error traces, zero hedging, zero polite filler.
+- **Builds with ruthless minimalism (Ponytail)**: Solves the entire problem with the least new code. Reuses existing patterns, prefers standard libraries over new dependencies, and avoids speculative abstractions.
+- **Enforces rigorous engineering standards (Addy Osmani)**: Surfaces assumptions explicitly, enforces testing contracts (Prove-It pattern), audits security boundaries, and tracks performance budgets.
+- **Orchestrates workflows reliably (Superpowers)**: Clarifies intent before planning, decomposes work into bite-sized tasks, isolates work in git worktrees, debugs systematically across 4 phases, and adheres to the **Iron Law**: `NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE`.
 
-## Repo layout
+Full technical details: [DOC.md](DOC.md).
+
+---
+
+## Repo Layout
 
 ```
 Engineer-Fusion-Skill/
-├── README.md                            ← you are here
-├── DOC.md                               ← full documentation of the three layers
-├── LICENSE                              ← MIT
-├── NOTICE.md                            ← attribution to the three source skills
+├── README.md                            ← Overview and multi-agent install guide
+├── DOC.md                               ← Architecture, progressive disclosure, precedence rules
+├── NOTICE.md                            ← Attribution (MIT) to the 4 upstream projects
+├── LICENSE                              ← MIT License
+├── package.json                         ← NPM package and OpenCode integration
+├── GEMINI.md & gemini-extension.json    ← Gemini CLI extension
+├── AGENTS.md                            ← Universal agent & contributor guidelines
+├── .claude-plugin/                      ← Claude Code plugin & marketplace manifests
+├── .antigravity-plugin/                 ← Google Antigravity (AGY) plugin manifest
+├── .codex-plugin/                       ← OpenAI Codex plugin manifest
+├── .cursor-plugin/                      ← Cursor IDE plugin manifest
+├── .devin-plugin/                       ← Devin plugin manifest
+├── .agents/                             ← ZCode / Agents marketplace manifest
+├── .opencode/                           ← OpenCode V1/V2 plugin bootstrap
+├── dist/
+│   └── engineer-fusion-standalone.md    ← Self-contained single-file bundle
+├── scripts/
+│   ├── bundle.js                        ← Generates standalone distribution
+│   └── validate.js                      ← Automated test & validation script
 └── skills/
-    └── engineer-fusion-skill/           ← the skill itself (portable)
-        ├── SKILL.md                     ← entry point: the three layers + routing
+    └── engineer-fusion-skill/
+        ├── SKILL.md                     ← Core prompt (all 4 layers + routing table)
         └── references/
-            └── addy-lifecycle.md        ← distilled 25-skill lifecycle discipline
+            ├── addy-lifecycle.md        ← 25 distilled lifecycle skills (on-demand)
+            └── superpowers-workflows.md ← Orchestration & verification workflows (on-demand)
 ```
 
-The `skills/engineer-fusion-skill/` directory is fully portable — copy it into any agent's skill location and it works.
+---
 
-## Install
+## Multi-Tool Compatibility & Installation
 
-### ZCode
-
-Copy the skill directory into the user-level skills folder:
-
-```bash
-git clone https://github.com/houssemdub/Engineer-Fusion-Skill.git
-mkdir -p ~/.agents/skills
-cp -r Engineer-Fusion-Skill/skills/engineer-fusion-skill ~/.agents/skills/
-```
-
-Restart the session — the skill is discovered at `~/.agents/skills/engineer-fusion-skill/SKILL.md`.
-
-### Claude Code
-
+### 1. Claude Code
+Install as a plugin or copy to skills directory:
 ```bash
 git clone https://github.com/houssemdub/Engineer-Fusion-Skill.git
 mkdir -p ~/.claude/skills
 cp -r Engineer-Fusion-Skill/skills/engineer-fusion-skill ~/.claude/skills/
 ```
+Or point Claude Code to the repository plugin via `.claude-plugin/`.
 
-Or point a plugin manifest at the `skills/` directory.
+### 2. Gemini CLI & Antigravity (AGY)
+- **Gemini CLI**: Run from within the repository or link as an extension (`gemini-extension.json` + `GEMINI.md`).
+- **Antigravity**: Discovered automatically via `.antigravity-plugin/plugin.json` or by placing in `~/.gemini/antigravity-cli/skills/`.
 
-### Any agent via the skills CLI
-
+### 3. ZCode & Agents Ecosystem
+Discovered automatically via `.agents/plugins/marketplace.json` or:
 ```bash
-npx skills add houssemdub/Engineer-Fusion-Skill
+mkdir -p ~/.agents/skills
+cp -r Engineer-Fusion-Skill/skills/engineer-fusion-skill ~/.agents/skills/
 ```
 
-### Cursor / Windsurf / Codex / Gemini CLI / OpenCode
+### 4. OpenCode
+Add the plugin to your `opencode.json` (or `~/.config/opencode/opencode.json`):
+```json
+{
+  "plugin": [
+    "/path/to/Engineer-Fusion-Skill/.opencode/plugins/engineer-fusion.js"
+  ]
+}
+```
 
-Copy `skills/engineer-fusion-skill/` into the agent's native skills directory (`.cursor/skills/`, `.codex/skills/`, `~/.config/opencode/skills/`, …) or paste the SKILL.md content into the agent's rules/instructions file. Skills are plain Markdown — any agent that accepts system prompts can use them.
+### 5. OpenAI Codex
+Discovered via `.codex-plugin/plugin.json` or by placing in your Codex skills folder.
 
-## Usage
+### 6. Cursor IDE
+Discovered via `.cursor-plugin/plugin.json` or copy to `.cursor/skills/`:
+```bash
+mkdir -p .cursor/skills
+cp -r Engineer-Fusion-Skill/skills/engineer-fusion-skill .cursor/skills/
+```
 
-The skill triggers automatically on coding tasks, and explicitly when you say **"caveman"**, **"ponytail"**, **"engineering mode"**, **"be brief"**, **"be lazy"**, or **"senior mode"**.
+### 7. Universal / Standalone (Windsurf, Copilot, Cline, Aider)
+For tools that do not support multi-file skills or relative file resolution:
+Use **[dist/engineer-fusion-standalone.md](dist/engineer-fusion-standalone.md)**.
+Paste its contents directly into `.cursorrules`, `.windsurfrules`, `.github/copilot-instructions.md`, or your system instructions.
 
-Per-layer switches (all confirmed in one line):
+---
+
+## Usage & Controls
+
+The skill triggers automatically on coding tasks, and explicitly when you say **"engineering mode"**, **"engineer fusion"**, **"caveman"**, **"ponytail"**, **"superpowers"**, **"be brief"**, **"be lazy"**, or **"senior mode"**.
+
+### Independent Layer Switches
 
 | Say | Effect |
 |---|---|
-| `stop caveman` | Back to normal prose; minimalism + discipline stay on |
-| `stop ponytail` | Normal solution scope; voice + discipline stay on |
-| `ponytail lite` / `ponytail ultra` | Smaller / stricter minimalism level |
-| `relaxed mode` | Drop the discipline layer; voice + minimalism stay on |
-| `stop engineering mode` / `normal mode` | Everything off |
+| `stop caveman` | Normal prose; minimalism, discipline, and superpowers stay ON |
+| `stop ponytail` | Standard solution sizing; voice, discipline, and superpowers stay ON |
+| `ponytail lite` / `ponytail ultra` | Relaxed or strict minimalism intensity |
+| `relaxed mode` | Drops Addy lifecycle checks; The Floor and other layers stay ON |
+| `solo mode` / `stop superpowers` | Drops worktree/subagent orchestration; direct single-agent work |
+| `stop engineering mode` / `normal mode` | Deactivates all layers |
 
-## Why fuse them?
+---
 
-The three source skills each solve a different failure mode of AI coding agents:
+## The Floor (Always Enforced)
 
-- **Caveman** fights verbose, ceremonial replies that bury the answer.
-- **Ponytail** fights over-engineering — 1000 lines where 100 suffice.
-- **Addy's agent-skills** fights skipped verification — "seems right" instead of passing tests.
+1. **The Iron Law**: `NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE.`
+2. **No silent suppressions**: No `@ts-ignore`, `eslint-disable`, `# noqa`, or empty `catch {}`.
+3. **Prove-It pattern**: Bug fixes require a failing reproduction test before implementation.
+4. **No secrets in source**: Environment variables only.
+5. **Stop-the-line**: Halt feature additions on any unexpected failure until root-cause diagnosed.
+6. **Atomic commits**: ~100 lines target per slice.
 
-Individually they're strong; together they cover the full surface: *how the agent talks, what the agent builds, and how the agent proves it works.* The skill also defines how the layers interact when they conflict (see [DOC.md](DOC.md#conflicts-between-layers)).
+---
 
-## Attribution
+## Validation & Building
 
-Built by fusing content from three open-source projects, each credited in [NOTICE.md](NOTICE.md):
+Verify manifests, references, and bundle:
 
-- **Caveman** — nizos/caveman (MIT)
-- **Pony Tail Engineer** — afadi-hub/ponytail (MIT)
-- **Agent Skills** — addyosmani/agent-skills (MIT)
+```bash
+npm run validate   # Validates all manifests, references, and JSON files
+npm run bundle     # Re-generates dist/engineer-fusion-standalone.md
+```
+
+---
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT License. Attribution to Julius Brussee (Caveman), Dietrich Gebert (Ponytail), Addy Osmani (Agent Skills), and Jesse Vincent (Superpowers). See [NOTICE.md](NOTICE.md).
