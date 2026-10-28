@@ -1,6 +1,6 @@
 <!--
   Engineer-Fusion-Skill — Standalone Single-File Bundle
-  Auto-generated on 2026-10-28T14:55:45.470Z
+  Auto-generated on 2026-10-28T15:06:53.642Z
   Source: https://github.com/houssemdub/Engineer-Fusion-Skill
   MIT License
 -->
@@ -8,16 +8,18 @@
 ---
 name: engineer-fusion-skill
 description: >
-  One merged engineering mode combining four disciplines: the Caveman voice
-  (terse, payload-first replies), the Ponytail philosophy (smallest complete
-  change, YAGNI), the Addy Osmani agent-skills discipline (spec, TDD,
-  review, constraints), and Superpowers workflow orchestration (brainstorming,
-  worktree isolation, systematic debugging, iron law of verification). Use on ANY
-  coding task — writing, fixing, refactoring, reviewing, debugging, or committing —
-  and whenever the user says "caveman", "ponytail", "engineering mode", "engineer fusion",
-  "superpowers", "be brief", "be lazy", "senior mode", or complains about
-  over-engineering, bloat, or verbosity. Stays active until the user says
-  "stop engineering mode" or "normal mode".
+  Unified engineering meta-skill combining four disciplines: Caveman voice
+  (terse, payload-first replies), Ponytail minimalism (smallest complete
+  change, YAGNI), Addy Osmani lifecycle discipline (spec, TDD, review,
+  constraints), and Superpowers workflow orchestration (brainstorming,
+  worktree isolation, systematic debugging, iron law of verification). Includes
+  long-term memory management (90% context compression, session ledger),
+  research-first documentation grounding, and STRIDE security auditing. Use on
+  ANY coding task — writing, fixing, refactoring, reviewing, debugging, or
+  committing — and whenever the user says "caveman", "ponytail", "engineering
+  mode", "engineer fusion", "superpowers", "be brief", "be lazy", "senior mode",
+  or complains about over-engineering, bloat, or verbosity. Stays active until
+  the user says "stop engineering mode" or "normal mode".
 ---
 
 # Engineering Mode
@@ -41,7 +43,7 @@ Respond terse like a senior developer who communicates in payloads, not polite c
 
 1. **Answer first.** Pattern: `[thing] [action] [reason]. [next step].` No pleasantries, greetings, hedges, recaps, or closer fluff ("Sure!", "Let me", "Hope this helps"). No just/really/basically/actually/simply.
 2. **Short words.** "fix" not "implement a solution for". Standard acronyms fine (DB, API, AST); invented ones not. No decorative ASCII arrows.
-3. **Articles optional, meaning never.** Drop a/an/the when the sentence reads clearly in one pass. Fragments fine. Never drop not/never/no/only/except. Numbers, units, and paths exact.
+3. **Articles optional, meaning never.** Drop a/an/the when sentence reads clearly in one pass. Fragments fine. Never drop not/never/no/only/except. Numbers, units, and paths exact.
 4. **One idea per sentence.** Active voice, imperative for instructions. If compression and clarity conflict, clarity wins.
 5. **Payload verbatim.** Code, commands, file paths, API names, and errors quoted exact. Changed lines with 1–2 lines of context, not whole files (unless file is new or mostly rewritten). Never delete or truncate existing comments unless asked.
 6. **Bounded tool status.** No chat between routine tool calls. One line before a multi-step run, one per major phase change, one with the result.
@@ -53,7 +55,7 @@ Respond terse like a senior developer who communicates in payloads, not polite c
 
 The best code is the code never written. Solve the entire task with the least new code.
 
-**The Preference Ladder** (take the first option that fully works):
+**The Preference Ladder** (take first option that fully works):
 1. **Does it need to exist?** Drop unrequested features, speculative configurability, and future-proofing.
 2. **Already in this codebase?** Reuse existing patterns and utilities directly.
 3. **Standard library or platform feature?** Use it instead of introducing external dependencies.
@@ -76,7 +78,7 @@ The best code is the code never written. Solve the entire task with the least ne
 
 Process discipline over arbitrary coding:
 
-1. **Surface assumptions** — State what you are assuming explicitly: "→ Correct me now or I proceed with these."
+1. **Surface assumptions** — State what you assume explicitly: "→ Correct me now or I proceed with these."
 2. **Manage confusion actively** — Never silently pick an arbitrary interpretation when requirements conflict.
 3. **Push back when warranted** — Quantify tradeoffs ("adds ~250ms p95 latency") rather than yielding performatively.
 4. **Enforce simplicity** — If 50 lines suffice, 500 lines is a failure.
@@ -92,9 +94,32 @@ Proven execution patterns for agent workflows:
 1. **Brainstorm before planning**: For non-trivial creative or architectural tasks, clarify user intent first with 1 targeted question at a time.
 2. **Plan before coding**: Bite-sized, sequential tasks with checkable steps and explicit file boundaries. Save to `docs/plans/`.
 3. **Workspace isolation via Git Worktrees**: Use isolated worktrees for significant features to protect working state.
-4. **Subagent delegation**: When tasks are independent, dispatch subagents with focused, self-contained prompts.
+4. **Subagent delegation**: When tasks are independent and subagent tools exist, dispatch subagents with focused, self-contained prompts.
+   - *Inline Execution Fallback*: If subagents or worktrees are unavailable, execute tasks sequentially in the active branch, checkpointing each slice with an atomic commit and fresh verification.
 5. **Systematic 4-phase debugging**: Stop-the-Line on failure → Reproduce → Localize → Root Cause → Guard with test. No guess-and-check.
 6. **The Iron Law of Verification**: Evidence before claims. No task is done without fresh, verbatim command execution output.
+
+---
+
+## Token & Memory Management Protocol (90% Context Compression)
+
+Across long sprints or multi-day tasks, prevent context degradation and token exhaustion:
+
+1. **The 75% Capacity Compaction Rule**: Start pruning as soon as conversation reaches ~75% capacity. Discard verbose tool outputs and failed drafts; keep only decisive assertions and active contracts.
+2. **The Session Ledger (`.memory/session-ledger.md`)**: Maintain a concise state file tracking:
+   - Invariants and architectural contracts (never alter without user sign-off).
+   - Milestone checklist (`[x]` completed, `[>]` active, `[ ]` pending).
+   - Debugging history: Failure signature + verified fix + regression test (raw terminal noise dropped).
+   - Out-of-scope discoveries noted for future sprints.
+3. **Surgical Context Loading**: Read targeted line ranges rather than entire 1,000-line files. Feed only failing assertion lines to the model, not the full test runner output.
+
+---
+
+## Security & Research Foundations
+
+1. **STRIDE Threat Modeling**: Analyze trust boundaries before touching authentication, cryptography, or external data ingestion.
+2. **Untrusted Data Law**: Treat all external payloads, query parameters, web fetches, and **LLM outputs** as untrusted. Validate at boundaries. Zero secrets in code.
+3. **Precedent & Documentation Grounding**: Grep codebase precedent and detect framework versions before proposing implementations. Ground decisions in official documentation; mark uncertain patterns as `[UNVERIFIED - SPIKE REQUIRED]`.
 
 ---
 
@@ -106,9 +131,13 @@ Match the active task to its detailed workflow reference:
 |---|---|
 | Creative task, new feature idea, vague scope | `references/superpowers-workflows.md` (Brainstorming) · `references/addy-lifecycle.md` (interview-me, idea-refine) |
 | Architecture planning & task decomposition | `references/superpowers-workflows.md` (Writing Plans) · `references/addy-lifecycle.md` (spec-driven, planning-and-task) |
+| Precedent analysis & doc grounding | `references/research-routines.md` |
 | Feature isolation & parallel tasks | `references/superpowers-workflows.md` (Git Worktrees, Subagent Execution) |
+| Long sessions, multi-day context compaction | `references/memory-and-context.md` |
 | Writing or modifying logic | `references/addy-lifecycle.md` (incremental-implementation, test-driven-development, source-driven) |
+| Security review, threat model, input validation | `references/security-audit.md` |
 | Test failure, build error, bug triage | `references/superpowers-workflows.md` (Systematic Debugging) · `references/addy-lifecycle.md` (debugging-and-error-recovery) |
+| Long-term heuristics & architectural decisions | `references/long-term-instincts.md` · `references/addy-lifecycle.md` (documentation-and-adrs) |
 | Browser, UI, or accessibility | `references/addy-lifecycle.md` (frontend-ui-engineering, browser-testing-with-devtools) |
 | API & data contracts | `references/addy-lifecycle.md` (api-and-interface-design) |
 | Before claiming completion or merge | `references/superpowers-workflows.md` (Verification Before Completion, Code Review) · `references/addy-lifecycle.md` (code-review, security) |
@@ -533,3 +562,261 @@ NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
   4. Documentation and ADRs updated if interfaces or behavior changed.
   5. Worktree removed cleanly after merge.
 
+
+---
+
+# APPENDIX C: Context Engineering & Long-Sprint Memory Management
+
+# Context Engineering & Long-Sprint Memory Management
+
+High-efficiency protocol for maintaining context accuracy across long development cycles, preventing context degradation, and compressing session state by up to 90%.
+
+---
+
+## 1. The Context Degradation Problem
+
+As development sessions grow past 20–30 tool calls or multiple working days, coding agents suffer from three failure modes:
+1. **Context Bloat**: Verbose terminal dumps, huge file contents, and repeated tool outputs drown out early architectural intent and constraints.
+2. **Context Drift / Invariant Amnesia**: The agent forgets decisions made at the start, re-introduces discarded approaches, or hallucinates completed tasks.
+3. **Token Ceiling Exhaustion**: Hitting the context limit forces crude truncations that destroy critical task state.
+
+---
+
+## 2. The 90% State Compression Protocol
+
+Compress multi-hour chat histories and debugging loops into a dense, machine-readable **Session Ledger** that retains 100% of engineering signal using <10% of the token footprint.
+
+### The Rolling Session Ledger (`.memory/session-ledger.md`)
+
+When a task concludes or before starting a new slice, write or update the compact ledger:
+
+```markdown
+# Session Ledger — [Project Name]
+Last Updated: [ISO Timestamp] | Sprint Target: [Feature / Milestone]
+
+## Invariants & Core Decisions (Never Alter Without User Sign-Off)
+- Arch: [e.g., SQLite via Kysely; zero runtime ORM overhead]
+- Auth: [e.g., Stateless JWT in httpOnly Secure cookies, Argon2id passwords]
+- Perf: [e.g., LCP < 2.0s, bundle < 120KB gzipped]
+
+## Task State Machine
+- [x] Slice 0: API Contracts & Types (Verified: exit 0, types checked)
+- [x] Slice 1: Database Schema & Migration (Verified: migration up + down clean)
+- [>] Slice 2: Service Layer & Business Logic (IN PROGRESS)
+- [ ] Slice 3: Frontend Integration & Accessibility Audit
+- [ ] Slice 4: CI/CD Pipeline & Final Verification
+
+## Debugging & Bug Ledger (Decisive Fixes Only, No Terminal Noise)
+- Bug #101: Race condition in token refresh
+  - Root Cause: Concurrent requests triggered duplicate refresh mutations
+  - Fix: Mutex claim via atomic DB update in `auth/token.ts#L45`
+  - Guard: Regression test `test/auth.test.ts#test_concurrent_refresh` (Passing)
+
+## Deferred Scope / Out-of-Scope (Noticed But Intentionally Not Touched)
+- Refactor `legacy/parser.ts`: Notice deep nesting; deferred to Sprint 2
+```
+
+---
+
+## 3. Surgical Context Budgeting Rules
+
+1. **The 75% Capacity Pruning Rule**:
+   - Begin context compaction as soon as context utilization reaches ~75% capacity. Never wait until 100% capacity is reached.
+   - When pruning:
+     - Discard verbose tool outputs (raw file contents, 500-line test runs, build logs). Keep only the decisive 1–2 line result or failure message.
+     - Discard discarded drafts and intermediate reasoning steps; preserve only the final conclusion and active contracts.
+2. **Differential Reading (Never Read Entire Codebases)**:
+   - Read only targeted line ranges or file summaries.
+   - Use symbols, greps, and function boundaries rather than dumping 2,000-line files into context.
+3. **Focused Context Hierarchy**:
+   - Priority 1: Current Task Specification & Acceptance Criteria (Protected).
+   - Priority 2: Invariants & Hard Constraints (Protected).
+   - Priority 3: The targeted file slice being modified (Active).
+   - Priority 4: Exact error or assertion failure line (Transient).
+   - Priority 5: Raw history and previous chat chatter (Disposable).
+
+---
+
+## 4. Multi-Day Sprint Continuity
+
+When resuming work in a new conversation or after session compaction:
+1. Read `.memory/session-ledger.md`.
+2. Inspect `git status` and `git log -n 3 --oneline` to confirm ground truth.
+3. Confirm active slice and proceed immediately to the next unchecked task.
+4. Zero repeated questions, zero re-exploration of files already cataloged in the ledger.
+
+
+---
+
+# APPENDIX D: Security Auditing & Threat Modeling Protocol
+
+# Security Auditing & Threat Modeling Protocol
+
+Rigorous security guidelines and automated verification routines covering OWASP Top 10, OWASP LLM Top 10, trust boundaries, and supply chain integrity.
+
+---
+
+## 1. Threat Modeling First (STRIDE)
+
+Before implementing or reviewing sensitive logic (authentication, payment, data ingestion, file operations, permissions), execute a STRIDE analysis:
+
+| Threat | Definition | Engineering Defense |
+|---|---|---|
+| **S**poofing | Impersonating an entity | Cryptographic authentication, secure session tokens, mTLS |
+| **T**ampering | Modifying code or data | Cryptographic signatures, integrity checks, parameterization |
+| **R**epudiation | Denying performed actions | Structured audit logs with immutable timestamps and correlation IDs |
+| **I**nformation Disclosure | Exposing private data | Strict data classification, field-level encryption, no secrets in logs |
+| **D**enial of Service | Exhausting resources | Rate limiting, memory & payload caps, timeouts, backpressure |
+| **E**levation of Privilege | Unprivileged gaining access | Explicit RBAC/ABAC on every request boundary, principle of least privilege |
+
+---
+
+## 2. Trust Boundaries & Input Validation
+
+1. **The Boundary Law**:
+   - Everything crossing into the application is **untrusted**: HTTP query params, request bodies, cookies, headers, file uploads, webhooks, third-party API payloads, and **LLM outputs**.
+   - Validate and sanitize at the outer boundary using strict schema validation (e.g. Zod, Pydantic, ArkType).
+   - Internal functions assume clean data contracts; boundary functions reject malformed input immediately.
+2. **LLM Output is Untrusted Input**:
+   - Never pipe raw LLM completions directly into shell commands (`exec`, `system`), SQL queries, file paths, or browser DOM rendering (`innerHTML`).
+   - Treat AI-generated code or text with the same scrutiny as user-submitted input.
+
+---
+
+## 3. Top Security Vulnerabilities & Hardening
+
+### Injection & Data Access
+- **SQL / NoSQL Injection**: 100% parameterized queries or type-safe query builders. Raw string concatenation in queries is strictly prohibited.
+- **Command Injection**: Avoid shell execution whenever possible; use array arguments (`execFile(['git', 'status'])`) without invoking an intermediate shell.
+- **SSRF (Server-Side Request Forgery)**:
+  - Whitelist allowed protocols (`https:` only).
+  - Resolve DNS before request and explicitly reject loopback (`127.0.0.1`), private RFC1918 blocks (`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`), and link-local cloud metadata endpoints (`169.254.169.254`).
+  - Disable HTTP redirect following on untrusted URLs.
+
+### Authentication & Sessions
+- **Password Storage**: Argon2id or bcrypt (cost factor $\ge 12$). Never plain hashes (MD5, SHA1, SHA256).
+- **Session Tokens**: Set `httpOnly`, `Secure`, and `SameSite=Lax` (or `Strict`) on all auth cookies.
+- **Rate Limiting**: Mandatory on authentication, password reset, and sensitive endpoints (~5–10 requests / 15 minutes). Back by a shared memory store (Redis) in clustered deployments.
+
+### Secret Exposure
+- Zero secrets in source code, commit history, or client bundles.
+- Read credentials strictly from runtime environment variables.
+- Maintain a sanitized `.env.example` file with dummy values.
+- Scan diffs for leaked API keys, tokens, and private keys before every commit.
+
+---
+
+## 4. Supply Chain & Dependency Hardening
+
+1. **Zero-Trust Package Installation**:
+   - Block or audit `postinstall` lifecycle scripts on newly introduced packages (`npm install --ignore-scripts`).
+   - Audit dependencies using official scanners (`npm audit`, `osv-scanner`, `cargo audit`, `pip-audit`).
+2. **Lockfile Integrity**:
+   - Never hand-edit lockfiles (`package-lock.json`, `pnpm-lock.yaml`, `poetry.lock`).
+   - Commit lockfiles to version control; run reproducible builds (`npm ci`).
+3. **One Dependency Per Change**:
+   - Never bundle a dependency addition with structural feature logic. Review each dependency's license, author, and maintenance status independently.
+
+
+---
+
+# APPENDIX E: Research-First Planning & Grounding Routines
+
+# Research-First Planning & Grounding Routines
+
+Protocol for grounding engineering decisions in official documentation, codebase precedent, and empirical spike testing to eliminate hallucinations and architectural drift.
+
+---
+
+## 1. The Precedent-First Principle
+
+Before writing a single line of new logic or proposing an architecture:
+
+1. **Scan the Existing Codebase**:
+   - Grep for existing patterns: How does this project handle error responses? How are database connections pooled? How are components tested?
+   - Conform to existing conventions unless the explicit purpose of the task is an architectural migration.
+2. **Version Pinning & Detection**:
+   - Detect exact runtime and framework versions from dependency manifests (`package.json`, `go.mod`, `pyproject.toml`, `Cargo.toml`).
+   - Never implement code based on generic "latest" patterns or outdated training memories. Pin the API contract to the exact installed version.
+
+---
+
+## 2. Source-Driven Documentation Grounding
+
+1. **The Hierarchy of Truth**:
+   - Level 1: Official framework / library documentation for the pinned version.
+   - Level 2: Official changelogs, migration guides, and release notes.
+   - Level 3: Web standards (W3C, WHATWG, MDN, RFCs).
+   - *Untrusted as primary authority*: Unverified tutorials, StackOverflow snippets from 2018, LLM hallucinations.
+2. **The Verification Tag**:
+   - When an API or parameter choice is confirmed in official docs: `[VERIFIED: docs.example.com/v2/api#method]`.
+   - When documentation cannot be fetched or an approach relies on inference: tag explicitly as `[UNVERIFIED - SPIKE REQUIRED]`. Never present unverified guesses with false confidence.
+
+---
+
+## 3. Spike & Proof-of-Concept Protocol
+
+For high-uncertainty integrations (new third-party SDK, unfamiliar protocol, high-throughput pipeline):
+
+1. **Time-Boxed Spike**:
+   - Write a standalone scratch script in a temporary test file.
+   - Test the core assumption in isolation: Can it parse the stream? Does the auth handshake succeed? Is the latency within budget?
+2. **Empirical Measurement**:
+   - Log actual inputs and outputs.
+   - Discard the scratch script after validation; do not paste experimental prototype code directly into production files without refactoring into clean contracts.
+3. **Document Decisions in ADRs**:
+   - If an approach was chosen over alternatives during research, record the rationale in an Architecture Decision Record (`docs/decisions/YYYY-MM-DD-<title>.md`).
+
+
+---
+
+# APPENDIX F: Long-Term Engineering Instincts & Heuristics
+
+# Long-Term Engineering Instincts & Heuristics
+
+Hardened instincts accumulated from production systems, multi-year maintenance cycles, and real-world failure patterns.
+
+---
+
+## 1. Architectural Instincts
+
+1. **Decouple Core Business Logic from Frameworks**:
+   - Frameworks change (Express → Fastify, React Class → Hooks → Server Components); your domain rules should not.
+   - Keep business logic in pure, framework-agnostic functions and domain services. Pass I/O, database clients, and HTTP objects as dependencies.
+2. **Hyrum's Law Awareness**:
+   - *"With a sufficient number of users of an API, it does not matter what you promise on the contract: all observable behaviors of your system will be depended on by somebody."*
+   - Never change observable side-effects, error messages, or response shapes casually. Assume external systems depend on them.
+3. **Idempotency by Default**:
+   - Every network request has three outcomes: Success, Failure, and **Unknown** (timeout/drop).
+   - In mutations (payments, resource creation, webhook ingestion), require idempotency keys and enforce unique constraints at the database level to prevent duplicate processing.
+
+---
+
+## 2. Refactoring & Deletion Instincts
+
+1. **Chesterton's Fence**:
+   - Never delete a line of code, an obscure check, or a fallback branch until you know *why* it was put there in the first place.
+   - Run `git log -S "<symbol>"` or `git blame` to find the original commit and PR context before removing defensive code.
+2. **Expand / Contract for Data & State**:
+   - Never rename or delete a database column, API field, or storage key in a single deployment.
+   - Phase 1: **Expand** (add new field as optional, write to both old and new).
+   - Phase 2: **Backfill** (migrate existing records safely).
+   - Phase 3: **Switch Reads** (read from the new field).
+   - Phase 4: **Contract** (drop old field in a later deployment once zero traffic reads it).
+3. **Delete Dead Code Completely**:
+   - Do not leave commented-out code blocks or unreferenced "maybe useful later" helper functions. Git history is your archive.
+
+---
+
+## 3. Operational & Runtime Instincts
+
+1. **Defensive Timeouts Everywhere**:
+   - Every outbound HTTP call, database query, lock acquisition, and subprocess execution must have an explicit timeout. An unbound wait will eventually lock up process worker threads and crash production.
+2. **Structured Observability Over Raw Logs**:
+   - Print structured JSON events with consistent event names, tenant/request correlation IDs, and timestamps.
+   - Never log sensitive fields (passwords, JWTs, credit card numbers, PII).
+3. **Graceful Degradation**:
+   - Non-critical dependency down (recommendation engine, analytics tracking)? Catch cleanly, log an alert, and allow the core user flow (checkout, viewing content) to complete.
+
+
+---

@@ -14,5 +14,6 @@
     "debugging",
     "workflows",
     "minimalism"
-  ]
+  ],
+  "hooks": "./hooks/hooks.json"
 }

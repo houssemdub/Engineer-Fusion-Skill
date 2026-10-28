@@ -10,18 +10,22 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 const skillDir = path.join(rootDir, 'skills', 'engineer-fusion-skill');
 const distDir = path.join(rootDir, 'dist');
-
-const skillPath = path.join(skillDir, 'SKILL.md');
-const addyRefPath = path.join(skillDir, 'references', 'addy-lifecycle.md');
-const superpowersRefPath = path.join(skillDir, 'references', 'superpowers-workflows.md');
+const refDir = path.join(skillDir, 'references');
 
 if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
 }
 
-const skillContent = fs.readFileSync(skillPath, 'utf8');
-const addyContent = fs.readFileSync(addyRefPath, 'utf8');
-const superpowersContent = fs.readFileSync(superpowersRefPath, 'utf8');
+const skillContent = fs.readFileSync(path.join(skillDir, 'SKILL.md'), 'utf8');
+
+const referenceFiles = [
+  { name: 'addy-lifecycle.md', title: 'APPENDIX A: Distilled Software Lifecycle Reference (Addy Osmani)' },
+  { name: 'superpowers-workflows.md', title: 'APPENDIX B: Distilled Workflow Orchestration Reference (Superpowers)' },
+  { name: 'memory-and-context.md', title: 'APPENDIX C: Context Engineering & Long-Sprint Memory Management' },
+  { name: 'security-audit.md', title: 'APPENDIX D: Security Auditing & Threat Modeling Protocol' },
+  { name: 'research-routines.md', title: 'APPENDIX E: Research-First Planning & Grounding Routines' },
+  { name: 'long-term-instincts.md', title: 'APPENDIX F: Long-Term Engineering Instincts & Heuristics' }
+];
 
 const banner = `<!--
   Engineer-Fusion-Skill — Standalone Single-File Bundle
@@ -30,23 +34,18 @@ const banner = `<!--
   MIT License
 -->\n\n`;
 
-const bundle = `${banner}${skillContent}
+let bundle = `${banner}${skillContent}\n\n---\n`;
 
----
-
-# APPENDIX A: Distilled Software Lifecycle Reference (Addy Osmani)
-
-${addyContent}
-
----
-
-# APPENDIX B: Distilled Workflow Orchestration Reference (Superpowers)
-
-${superpowersContent}
-`;
+for (const ref of referenceFiles) {
+  const filePath = path.join(refDir, ref.name);
+  if (fs.existsSync(filePath)) {
+    const content = fs.readFileSync(filePath, 'utf8');
+    bundle += `\n# ${ref.title}\n\n${content}\n\n---\n`;
+  }
+}
 
 const outputPath = path.join(distDir, 'engineer-fusion-standalone.md');
 fs.writeFileSync(outputPath, bundle, 'utf8');
 
 console.log(`[bundle] Generated standalone bundle at: ${outputPath}`);
-console.log(`[bundle] Size: ${(Buffer.byteLength(bundle, 'utf8') / 1024).toFixed(1)} KB`);
+console.log(`[bundle] Total Size: ${(Buffer.byteLength(bundle, 'utf8') / 1024).toFixed(1)} KB`);

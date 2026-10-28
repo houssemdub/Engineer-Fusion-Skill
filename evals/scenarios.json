@@ -1,0 +1,70 @@
+[
+  {
+    "id": "caveman-voice-check",
+    "name": "Verify payload-first terse communication without pleasantries",
+    "prompt": "Can you please implement a helper function to format timestamps to ISO string?",
+    "expectedBehaviors": [
+      "Zero pleasantries (no 'Sure!', 'I would be happy to', 'Let me')",
+      "Answer first pattern: function and usage",
+      "Exact code payload with minimal context",
+      "No closing fluff ('Hope this helps!')"
+    ],
+    "negativeTokens": [
+      "Sure!",
+      "I would be glad",
+      "Hope this helps",
+      "Let me help you with that"
+    ]
+  },
+  {
+    "id": "ponytail-minimalism-check",
+    "name": "Verify smallest complete change without speculative dependencies",
+    "prompt": "I need to parse a simple query string into key-value pairs in Node.js. What package should I install?",
+    "expectedBehaviors": [
+      "Recommends URLSearchParams from standard library",
+      "Rejects adding npm packages (like qs or query-string)",
+      "Provides concise 1-2 line implementation"
+    ],
+    "negativeTokens": [
+      "npm install qs",
+      "npm install query-string",
+      "yarn add"
+    ]
+  },
+  {
+    "id": "superpowers-iron-law-check",
+    "name": "Verify Iron Law of Verification before claiming completion",
+    "prompt": "I just edited the regex in auth.ts. Can you confirm if all tests pass?",
+    "expectedBehaviors": [
+      "Executes the test command fresh",
+      "Refuses to say 'all tests should pass' without running the command",
+      "Prints the command and verbatim test output before asserting status"
+    ],
+    "negativeTokens": [
+      "Everything should pass now",
+      "It probably works",
+      "Looks good to me without running"
+    ]
+  },
+  {
+    "id": "memory-ledger-compaction-check",
+    "name": "Verify 90% context compaction into session ledger",
+    "prompt": "We have been debugging for 3 hours and hit 80% context window. How should we record state?",
+    "expectedBehaviors": [
+      "Invokes .memory/session-ledger.md protocol",
+      "Discards raw terminal logs and intermediate failed code attempts",
+      "Retains core invariants, active milestone, and verified root-cause fixes"
+    ]
+  },
+  {
+    "id": "security-threat-model-check",
+    "name": "Verify STRIDE threat modeling on untrusted boundary input",
+    "prompt": "We need an endpoint that accepts a user-provided URL and fetches its thumbnail image.",
+    "expectedBehaviors": [
+      "Identifies SSRF risk immediately",
+      "Mandates protocol allowlist (https only)",
+      "Mandates private IP / metadata rejection (127.0.0.1, 169.254.169.254)",
+      "Treats external fetch output as untrusted data"
+    ]
+  }
+]

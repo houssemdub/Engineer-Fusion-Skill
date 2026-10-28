@@ -1,7 +1,7 @@
 /**
  * Engineer-Fusion-Skill plugin for OpenCode
  *
- * Compatible with OpenCode V1 and V2.
+ * Dual-compatible with OpenCode V1 and V2.
  * Pure JavaScript without external dependencies.
  */
 
@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const skillsDir = path.resolve(__dirname, '../../skills');
+const skillPath = path.join(skillsDir, 'engineer-fusion-skill', 'SKILL.md');
 
 const extractAndStripFrontmatter = (content) => {
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -44,17 +45,25 @@ export const EngineerFusionPlugin = async () => {
         .map((d) => d.name);
 
       for (const folder of skillFolders) {
-        const skillPath = path.join(skillsDir, folder, 'SKILL.md');
-        if (fs.existsSync(skillPath)) {
-          const raw = fs.readFileSync(skillPath, 'utf8');
+        const p = path.join(skillsDir, folder, 'SKILL.md');
+        if (fs.existsSync(p)) {
+          const raw = fs.readFileSync(p, 'utf8');
           const { frontmatter } = extractAndStripFrontmatter(raw);
           cfg.skills.push({
             name: frontmatter.name || folder,
             description: frontmatter.description || '',
-            path: skillPath
+            path: p
           });
         }
       }
+    },
+    'experimental.chat.messages.transform': async (messages) => {
+      if (fs.existsSync(skillPath)) {
+        const raw = fs.readFileSync(skillPath, 'utf8');
+        const injection = `<ENGINEER_FUSION_BOOTSTRAP>\n${raw}\n</ENGINEER_FUSION_BOOTSTRAP>`;
+        return [{ role: 'system', content: injection }, ...messages];
+      }
+      return messages;
     }
   };
 };
@@ -64,7 +73,6 @@ export default {
   async setup(ctx) {
     if (ctx?.skill?.transform && fs.existsSync(skillsDir)) {
       ctx.skill.transform((skills) => {
-        const skillPath = path.join(skillsDir, 'engineer-fusion-skill', 'SKILL.md');
         if (fs.existsSync(skillPath)) {
           const raw = fs.readFileSync(skillPath, 'utf8');
           const { frontmatter } = extractAndStripFrontmatter(raw);
@@ -75,6 +83,12 @@ export default {
           });
         }
         return skills;
+      });
+    }
+    if (ctx?.session?.hook && fs.existsSync(skillPath)) {
+      ctx.session.hook('context', async () => {
+        const raw = fs.readFileSync(skillPath, 'utf8');
+        return `<ENGINEER_FUSION_BOOTSTRAP>\n${raw}\n</ENGINEER_FUSION_BOOTSTRAP>`;
       });
     }
   }

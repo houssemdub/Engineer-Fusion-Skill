@@ -1,17 +1,19 @@
 # Engineer-Fusion-Skill
 
-**One agent skill that fuses four engineering disciplines into a single high-performance way of working.**
+**One agent skill that fuses four engineering disciplines, memory management, and security auditing into a single high-performance way of working.**
 
-Engineer-Fusion-Skill combines four proven agent skills into one unified, portable framework:
+Engineer-Fusion-Skill combines four proven agent skills and production-grade engineering routines:
 
 | Layer | Heritage | Governs |
 |---|---|---|
 | **1. Voice** | [Caveman](https://github.com/JuliusBrussee/caveman) | How the agent replies — terse, payload-first, zero ceremony |
 | **2. Minimalism** | [Pony Tail Engineer](https://github.com/DietrichGebert/ponytail) | What the agent builds — smallest complete change, YAGNI, standard library first |
-| **3. Discipline** | [Addy Osmani's agent-skills](https://github.com/addyosmani/agent-skills) | How the agent verifies — 25 lifecycle skills, contracts, 80/15/5 test pyramid, security |
+| **3. Discipline** | [Addy Osmani's agent-skills](https://github.com/addyosmani/agent-skills) | How the agent verifies — 25 lifecycle skills, contracts, 80/15/5 test pyramid |
 | **4. Orchestration** | [Superpowers](https://github.com/obra/superpowers) | How the agent executes — brainstorming, worktree isolation, systematic debugging, iron law of verification |
-
-Each layer is independent and toggleable, giving you maximum engineering rigor without rigidity.
+| **+ Memory** | Context Engineering Engine | 90% context compression, session ledger, multi-day sprint continuity |
+| **+ Security** | STRIDE & Hardening Protocol | Threat modeling, untrusted input boundaries, SSRF defense, secret zero-exposure |
+| **+ Research** | Documentation Grounding | Codebase precedent scanning, version pinning, anti-hallucination spike tests |
+| **+ Instincts** | Long-Term Engineering Heuristics | Decoupled domain models, idempotency by default, Expand/Contract migrations |
 
 ```
 ┌────────────────────────────────────────────────────────┐
@@ -22,22 +24,25 @@ Each layer is independent and toggleable, giving you maximum engineering rigor w
 │  DISCIPLINE (Addy)       → Engineering standards      │
 │  ORCHESTRATION (Super)   → How you execute & verify    │
 │                                                        │
-│  All four ON by default. Toggle independently.         │
+│  ENHANCED WITH:                                        │
+│  • 90% Context Compression (.memory/session-ledger.md) │
+│  • STRIDE Security Auditing & Boundary Law             │
+│  • Research-First Precedent & Doc Grounding            │
+│  • Long-Term Production Instincts (Hyrum, YAGNI)       │
 └────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## What It Does
+## What It Solves
 
-When active, the agent:
+- **Context Degradation & Token Bleed**: Compresses past debugging history, architectural decisions, and session state by up to 90% in `.memory/session-ledger.md`.
+- **Hallucinated Completion**: Enforces the **Iron Law of Verification**: `NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE`.
+- **Dependency & Code Bloat**: Prioritizes standard library and existing codebase patterns over installing new dependencies.
+- **Security Vulnerabilities**: Enforces STRIDE threat modeling and treats all external inputs, web scrapes, and LLM outputs as untrusted data.
+- **Unverified Hallucinations**: Precedent-first grep routines and official doc version pinning eliminate speculative implementations.
 
-- **Communicates like a senior engineer (Caveman)**: Payload first, answer first, exact commands, exact error traces, zero hedging, zero polite filler.
-- **Builds with ruthless minimalism (Ponytail)**: Solves the entire problem with the least new code. Reuses existing patterns, prefers standard libraries over new dependencies, and avoids speculative abstractions.
-- **Enforces rigorous engineering standards (Addy Osmani)**: Surfaces assumptions explicitly, enforces testing contracts (Prove-It pattern), audits security boundaries, and tracks performance budgets.
-- **Orchestrates workflows reliably (Superpowers)**: Clarifies intent before planning, decomposes work into bite-sized tasks, isolates work in git worktrees, debugs systematically across 4 phases, and adheres to the **Iron Law**: `NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE`.
-
-Full technical details: [DOC.md](DOC.md).
+Full technical documentation: [DOC.md](DOC.md).
 
 ---
 
@@ -46,30 +51,42 @@ Full technical details: [DOC.md](DOC.md).
 ```
 Engineer-Fusion-Skill/
 ├── README.md                            ← Overview and multi-agent install guide
-├── DOC.md                               ← Architecture, progressive disclosure, precedence rules
-├── NOTICE.md                            ← Attribution (MIT) to the 4 upstream projects
+├── DOC.md                               ← Architecture, memory management, precedence rules
+├── NOTICE.md                            ← Attribution (MIT)
 ├── LICENSE                              ← MIT License
 ├── package.json                         ← NPM package and OpenCode integration
 ├── GEMINI.md & gemini-extension.json    ← Gemini CLI extension
 ├── AGENTS.md                            ← Universal agent & contributor guidelines
-├── .claude-plugin/                      ← Claude Code plugin & marketplace manifests
+├── .claude-plugin/                      ← Claude Code plugin & hooks
 ├── .antigravity-plugin/                 ← Google Antigravity (AGY) plugin manifest
 ├── .codex-plugin/                       ← OpenAI Codex plugin manifest
-├── .cursor-plugin/                      ← Cursor IDE plugin manifest
+├── .cursor-plugin/                      ← Cursor IDE plugin & hooks
 ├── .devin-plugin/                       ← Devin plugin manifest
 ├── .agents/                             ← ZCode / Agents marketplace manifest
 ├── .opencode/                           ← OpenCode V1/V2 plugin bootstrap
+├── hooks/                               ← Native session-start lifecycle hooks
+│   ├── hooks.json                       ← Claude Code hook specification
+│   ├── hooks-cursor.json                ← Cursor hook specification
+│   ├── run-hook.cmd                     ← Cross-platform hook runner
+│   └── session-start.sh                 ← Session bootstrap injector
+├── evals/                               ← Benchmark & compliance scenarios
+│   └── scenarios.json                   ← Test cases (voice, minimalism, verification)
 ├── dist/
-│   └── engineer-fusion-standalone.md    ← Self-contained single-file bundle
+│   └── engineer-fusion-standalone.md    ← Self-contained single-file bundle (~59 KB)
 ├── scripts/
 │   ├── bundle.js                        ← Generates standalone distribution
-│   └── validate.js                      ← Automated test & validation script
+│   ├── validate.js                      ← Automated test & validation script
+│   └── run-evals.js                     ← Runs compliance scenario checks
 └── skills/
     └── engineer-fusion-skill/
-        ├── SKILL.md                     ← Core prompt (all 4 layers + routing table)
+        ├── SKILL.md                     ← Core prompt (all layers + routing table)
         └── references/
-            ├── addy-lifecycle.md        ← 25 distilled lifecycle skills (on-demand)
-            └── superpowers-workflows.md ← Orchestration & verification workflows (on-demand)
+            ├── addy-lifecycle.md        ← 25 distilled lifecycle skills
+            ├── superpowers-workflows.md ← Orchestration & verification workflows
+            ├── memory-and-context.md    ← 90% context compression & session ledger
+            ├── security-audit.md        ← STRIDE threat modeling & boundary law
+            ├── research-routines.md     ← Precedent analysis & doc grounding
+            └── long-term-instincts.md   ← Hardened engineering heuristics
 ```
 
 ---
@@ -77,17 +94,16 @@ Engineer-Fusion-Skill/
 ## Multi-Tool Compatibility & Installation
 
 ### 1. Claude Code
-Install as a plugin or copy to skills directory:
+Discovered via `.claude-plugin/` or copy to skills directory:
 ```bash
 git clone https://github.com/houssemdub/Engineer-Fusion-Skill.git
 mkdir -p ~/.claude/skills
 cp -r Engineer-Fusion-Skill/skills/engineer-fusion-skill ~/.claude/skills/
 ```
-Or point Claude Code to the repository plugin via `.claude-plugin/`.
 
 ### 2. Gemini CLI & Antigravity (AGY)
-- **Gemini CLI**: Run from within the repository or link as an extension (`gemini-extension.json` + `GEMINI.md`).
-- **Antigravity**: Discovered automatically via `.antigravity-plugin/plugin.json` or by placing in `~/.gemini/antigravity-cli/skills/`.
+- **Gemini CLI**: Run from within repository or link extension (`gemini-extension.json` + `GEMINI.md`).
+- **Antigravity**: Discovered via `.antigravity-plugin/plugin.json` or by placing in `~/.gemini/antigravity-cli/skills/`.
 
 ### 3. ZCode & Agents Ecosystem
 Discovered automatically via `.agents/plugins/marketplace.json` or:
@@ -97,7 +113,7 @@ cp -r Engineer-Fusion-Skill/skills/engineer-fusion-skill ~/.agents/skills/
 ```
 
 ### 4. OpenCode
-Add the plugin to your `opencode.json` (or `~/.config/opencode/opencode.json`):
+Add plugin to your `opencode.json` (or `~/.config/opencode/opencode.json`):
 ```json
 {
   "plugin": [
@@ -107,14 +123,10 @@ Add the plugin to your `opencode.json` (or `~/.config/opencode/opencode.json`):
 ```
 
 ### 5. OpenAI Codex
-Discovered via `.codex-plugin/plugin.json` or by placing in your Codex skills folder.
+Discovered via `.codex-plugin/plugin.json` or placed in your Codex skills folder.
 
 ### 6. Cursor IDE
-Discovered via `.cursor-plugin/plugin.json` or copy to `.cursor/skills/`:
-```bash
-mkdir -p .cursor/skills
-cp -r Engineer-Fusion-Skill/skills/engineer-fusion-skill .cursor/skills/
-```
+Configured via `.cursor-plugin/plugin.json` and hooks in `hooks/hooks-cursor.json`.
 
 ### 7. Universal / Standalone (Windsurf, Copilot, Cline, Aider)
 For tools that do not support multi-file skills or relative file resolution:
@@ -125,7 +137,7 @@ Paste its contents directly into `.cursorrules`, `.windsurfrules`, `.github/copi
 
 ## Usage & Controls
 
-The skill triggers automatically on coding tasks, and explicitly when you say **"engineering mode"**, **"engineer fusion"**, **"caveman"**, **"ponytail"**, **"superpowers"**, **"be brief"**, **"be lazy"**, or **"senior mode"**.
+The skill triggers automatically on coding tasks, via session-start hooks, or explicitly when saying **"engineering mode"**, **"engineer fusion"**, **"caveman"**, **"ponytail"**, **"superpowers"**, **"be brief"**, **"be lazy"**, or **"senior mode"**.
 
 ### Independent Layer Switches
 
@@ -151,13 +163,13 @@ The skill triggers automatically on coding tasks, and explicitly when you say **
 
 ---
 
-## Validation & Building
-
-Verify manifests, references, and bundle:
+## Testing & Validation Suite
 
 ```bash
-npm run validate   # Validates all manifests, references, and JSON files
-npm run bundle     # Re-generates dist/engineer-fusion-standalone.md
+npm test         # Runs full suite: validation, eval scenarios, and bundle generation
+npm run validate # Validates manifests, links, frontmatter, and JSON syntax
+npm run evals    # Benchmarks agent compliance against behavioral scenarios
+npm run bundle   # Generates standalone distribution bundle
 ```
 
 ---

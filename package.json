@@ -1,7 +1,7 @@
 {
   "name": "engineer-fusion-skill",
-  "version": "1.0.0",
-  "description": "Unified engineering meta-skill fusing Caveman voice, Ponytail minimalism, Addy Osmani lifecycle discipline, and Superpowers workflow orchestration",
+  "version": "1.1.0",
+  "description": "Unified engineering meta-skill fusing Caveman voice, Ponytail minimalism, Addy Osmani lifecycle discipline, Superpowers orchestration, 90% context memory compression, and STRIDE security auditing",
   "type": "module",
   "main": ".opencode/plugins/engineer-fusion.js",
   "keywords": [
@@ -13,11 +13,15 @@
     "tdd",
     "debugging",
     "software-engineering",
-    "code-review"
+    "code-review",
+    "memory-management",
+    "security-audit"
   ],
   "scripts": {
     "bundle": "node scripts/bundle.js",
-    "validate": "node scripts/validate.js"
+    "validate": "node scripts/validate.js",
+    "evals": "node scripts/run-evals.js",
+    "test": "npm run validate && npm run evals && npm run bundle"
   },
   "author": "Houssem Dub",
   "license": "MIT",

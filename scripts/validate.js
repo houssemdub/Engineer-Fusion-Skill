@@ -1,5 +1,5 @@
 /**
- * Validate skill frontmatter, files, manifests, and references.
+ * Validate skill frontmatter, files, manifests, hooks, and references.
  */
 
 import fs from 'fs';
@@ -13,6 +13,15 @@ const requiredFiles = [
   'skills/engineer-fusion-skill/SKILL.md',
   'skills/engineer-fusion-skill/references/addy-lifecycle.md',
   'skills/engineer-fusion-skill/references/superpowers-workflows.md',
+  'skills/engineer-fusion-skill/references/memory-and-context.md',
+  'skills/engineer-fusion-skill/references/security-audit.md',
+  'skills/engineer-fusion-skill/references/research-routines.md',
+  'skills/engineer-fusion-skill/references/long-term-instincts.md',
+  'hooks/hooks.json',
+  'hooks/hooks-cursor.json',
+  'hooks/run-hook.cmd',
+  'hooks/session-start.sh',
+  'evals/scenarios.json',
   'package.json',
   'gemini-extension.json',
   'GEMINI.md',
@@ -24,6 +33,7 @@ const requiredFiles = [
   '.cursor-plugin/plugin.json',
   '.devin-plugin/plugin.json',
   '.agents/plugins/marketplace.json',
+  '.opencode/plugins/engineer-fusion.js',
   'dist/engineer-fusion-standalone.md',
   'README.md',
   'DOC.md',
@@ -82,7 +92,10 @@ const jsonFiles = [
   '.codex-plugin/plugin.json',
   '.cursor-plugin/plugin.json',
   '.devin-plugin/plugin.json',
-  '.agents/plugins/marketplace.json'
+  '.agents/plugins/marketplace.json',
+  'hooks/hooks.json',
+  'hooks/hooks-cursor.json',
+  'evals/scenarios.json'
 ];
 
 for (const jf of jsonFiles) {
